@@ -1,0 +1,93 @@
+import { useState } from "react"
+import { Header } from "@/components/Header"
+import { SearchForm } from "@/components/SearchForm"
+import { LoadingState } from "@/components/LoadingState"
+import { ErrorState } from "@/components/ErrorState"
+import { EmptyState } from "@/components/EmptyState"
+import { UserProfileCard } from "@/components/UserProfileCard"
+import { RatingSummaryCard } from "@/components/RatingSummaryCard"
+import { RadarRatingChart } from "@/components/RadarRatingChart"
+import { RepoStarsChart } from "@/components/RepoStarsChart"
+import { RepoList } from "@/components/RepoList"
+import { useGithubUser } from "@/hooks/useGithubUser"
+import { useGithubRepos } from "@/hooks/useGithubRepos"
+import { useGithubRating } from "@/hooks/useGithubRating"
+
+function App() {
+	const [username, setUsername] = useState<string | null>(null)
+
+	const {
+		data: user,
+		isLoading: isLoadingUser,
+		isError: isErrorUser,
+		error: userError,
+		refetch: refetchUser,
+	} = useGithubUser(username)
+
+	const {
+		data: repos,
+		isLoading: isLoadingRepos,
+		isError: isErrorRepos,
+		error: reposError,
+		refetch: refetchRepos,
+	} = useGithubRepos(username)
+
+	const rating = useGithubRating(user, repos)
+
+	const isLoading = isLoadingUser || isLoadingRepos
+	const isError = isErrorUser || isErrorRepos
+	const error = userError || reposError
+
+	const handleSearch = (newUsername: string) => {
+		setUsername(newUsername)
+	}
+
+	const handleRetry = () => {
+		refetchUser()
+		refetchRepos()
+	}
+
+	const getErrorMessage = (): string => {
+		if (!error) return "Bilinmeyen bir hata oluştu"
+		if (error.message.includes("404")) {
+			return "Kullanıcı bulunamadı. Lütfen geçerli bir GitHub kullanıcı adı girin."
+		}
+		if (error.message.includes("rate limit") || error.message.includes("403")) {
+			return "API rate limit aşıldı. Lütfen birkaç dakika sonra tekrar deneyin."
+		}
+		return error.message || "Bir hata oluştu. Lütfen tekrar deneyin."
+	}
+
+	return (
+		<div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+			<Header />
+			<SearchForm onSearch={handleSearch} isLoading={isLoading} />
+
+			{!username && <EmptyState />}
+
+			{isLoading && username && <LoadingState />}
+
+			{isError && username && (
+				<ErrorState message={getErrorMessage()} onRetry={handleRetry} />
+			)}
+
+			{user && repos && rating && !isLoading && !isError && (
+				<div className="mx-auto max-w-5xl px-4 pb-12">
+					<div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+						<UserProfileCard user={user} repos={repos} />
+						<RatingSummaryCard rating={rating} />
+					</div>
+
+					<div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+						<RadarRatingChart rating={rating} />
+						<RepoStarsChart repos={repos} />
+					</div>
+
+					<RepoList repos={repos} />
+				</div>
+			)}
+		</div>
+	)
+}
+
+export default App
