@@ -2,7 +2,7 @@ export const tr = {
 	common: {
 		search: "GitHub kullanıcı adı bul",
 		searchPlaceholder: "kullanıcı adı ara",
-		analyzing: "profil analiz ediliyor...",
+		analyzing: "Profil Analizi Yapılıyor...",
 		error: "Hata",
 		tryAgain: "Tekrar Dene",
 		lastActive: "Son aktivite",
@@ -12,7 +12,7 @@ export const tr = {
 	},
 	hero: {
 		title: "GIT SCORE LAB",
-		subtitle: "herhangi bir geliştiricinin GitHub rating skorunu bul",
+		subtitle: "Herhangi bir geliştiricinin GitHub rating skorunu bul",
 	},
 	profile: {
 		followers: "takipçi",
@@ -46,6 +46,11 @@ export const tr = {
 		forks: "Fork",
 		language: "Dil",
 		updated: "Güncellendi",
+		searchPlaceholder: "Repo ara...",
+		previous: "Önceki",
+		next: "Sonraki",
+		showing: "Gösteriliyor",
+		of: "toplam",
 	},
 	errors: {
 		unknown: "Bilinmeyen bir hata oluştu",

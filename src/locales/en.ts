@@ -46,6 +46,11 @@ export const en = {
 		forks: "Forks",
 		language: "Language",
 		updated: "Updated",
+		searchPlaceholder: "Search repos...",
+		previous: "Previous",
+		next: "Next",
+		showing: "Showing",
+		of: "of",
 	},
 	errors: {
 		unknown: "An unknown error occurred",

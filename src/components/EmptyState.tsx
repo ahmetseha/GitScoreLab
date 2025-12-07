@@ -14,15 +14,21 @@ export function EmptyState() {
 						stroke="currentColor"
 						strokeWidth={1.5}
 					>
-						<circle cx="100" cy="100" r="80" />
-						<path d="M60 100 L90 100 M110 100 L140 100" strokeLinecap="round" />
-						<circle cx="80" cy="70" r="8" />
-						<circle cx="120" cy="70" r="8" />
 						<path
-							d="M70 130 Q100 150 130 130"
+							d="M100 20 L100 40 M100 160 L100 180"
 							strokeLinecap="round"
-							fill="none"
 						/>
+						<path
+							d="M20 100 L40 100 M160 100 L180 100"
+							strokeLinecap="round"
+						/>
+						<circle cx="100" cy="100" r="60" strokeDasharray="4 4" />
+						<circle cx="100" cy="100" r="40" />
+						<path
+							d="M70 70 L85 85 M130 70 L115 85 M70 130 L85 115 M130 130 L115 115"
+							strokeLinecap="round"
+						/>
+						<circle cx="100" cy="100" r="8" fill="currentColor" />
 					</svg>
 				</div>
 			</div>
