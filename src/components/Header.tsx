@@ -16,7 +16,7 @@ export function Header() {
 						GIT SCORE LAB
 					</h1>
 				</a>
-				<div className="flex items-center gap-2">
+				<div className="flex items-center gap-4">
 					<div className="flex items-center gap-1 rounded-md border border-gray-200 bg-white p-0.5">
 						<button
 							onClick={() => setLocale("tr")}

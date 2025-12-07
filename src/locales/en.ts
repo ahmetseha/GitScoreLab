@@ -1,8 +1,8 @@
 export const en = {
 	common: {
-		search: "find GitHub username",
-		searchPlaceholder: "find username",
-		analyzing: "analyzing profile...",
+		search: "Find GitHub username",
+		searchPlaceholder: "Find username",
+		analyzing: "Analyzing profile...",
 		error: "Error",
 		tryAgain: "Try again",
 		lastActive: "last active",
@@ -12,7 +12,7 @@ export const en = {
 	},
 	hero: {
 		title: "GIT SCORE LAB",
-		subtitle: "find the GitHub rating score of any developer",
+		subtitle: "Find the GitHub rating score of any developer",
 	},
 	profile: {
 		followers: "followers",
@@ -59,4 +59,3 @@ export const en = {
 		generic: "An error occurred. Please try again.",
 	},
 }
-

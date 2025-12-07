@@ -1,7 +1,7 @@
 export const tr = {
 	common: {
-		search: "GitHub kullanıcı adı bul",
-		searchPlaceholder: "kullanıcı adı ara",
+		search: "GitHub Kullanıcı Adı Bul",
+		searchPlaceholder: "Kullanıcı Adı Ara",
 		analyzing: "Profil Analizi Yapılıyor...",
 		error: "Hata",
 		tryAgain: "Tekrar Dene",
@@ -12,7 +12,7 @@ export const tr = {
 	},
 	hero: {
 		title: "GIT SCORE LAB",
-		subtitle: "Herhangi bir geliştiricinin GitHub rating skorunu bul",
+		subtitle: "Herhangi bir geliştiricinin GitHub rating skorunu bulun",
 	},
 	profile: {
 		followers: "takipçi",

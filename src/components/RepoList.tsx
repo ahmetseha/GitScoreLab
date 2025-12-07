@@ -45,8 +45,14 @@ export function RepoList({ repos }: RepoListProps) {
 		setCurrentPage(page)
 	}
 
-	const getPageNumbers = () => {
+	const getPageNumbers = (isMobile: boolean = false) => {
 		const pages: (number | string)[] = []
+
+		if (isMobile) {
+			pages.push(currentPage)
+			return pages
+		}
+
 		const maxVisible = 5
 
 		if (totalPages <= maxVisible) {
@@ -177,53 +183,64 @@ export function RepoList({ repos }: RepoListProps) {
 				</table>
 			</div>
 			{totalPages > 1 && (
-				<div className="mt-6 flex items-center justify-between border-t border-gray-200 pt-6">
-					<div className="text-xs text-gray-600">
-						{t.repositories.showing} {startIndex + 1}-{Math.min(endIndex, filteredAndSortedRepos.length)} {t.repositories.of}{" "}
-						{filteredAndSortedRepos.length}
-					</div>
-					<div className="flex items-center gap-2">
-						<button
-							onClick={() => handlePageChange(currentPage - 1)}
-							disabled={currentPage === 1}
-							className="rounded-md border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
-						>
-							{t.repositories.previous}
-						</button>
-						<div className="flex items-center gap-1">
-							{getPageNumbers().map((page, index) => {
-								if (page === "...") {
-									return (
-										<span
-											key={`ellipsis-${index}`}
-											className="px-2 text-xs text-gray-400"
-										>
-											...
-										</span>
-									)
-								}
-								return (
-									<button
-										key={page}
-										onClick={() => handlePageChange(page as number)}
-										className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-											currentPage === page
-												? "bg-gray-900 text-white"
-												: "border border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
-										}`}
-									>
-										{page}
-									</button>
-								)
-							})}
+				<div className="mt-6 border-t border-gray-200 pt-6">
+					<div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+						<div className="text-xs text-gray-600 sm:hidden">
+							{t.repositories.showing} {startIndex + 1}-{Math.min(endIndex, filteredAndSortedRepos.length)} {t.repositories.of}{" "}
+							{filteredAndSortedRepos.length}
 						</div>
-						<button
-							onClick={() => handlePageChange(currentPage + 1)}
-							disabled={currentPage === totalPages}
-							className="rounded-md border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
-						>
-							{t.repositories.next}
-						</button>
+						<div className="hidden text-xs text-gray-600 sm:block">
+							{t.repositories.showing} {startIndex + 1}-{Math.min(endIndex, filteredAndSortedRepos.length)} {t.repositories.of}{" "}
+							{filteredAndSortedRepos.length}
+						</div>
+						<div className="flex items-center gap-2">
+							<button
+								onClick={() => handlePageChange(currentPage - 1)}
+								disabled={currentPage === 1}
+								className="rounded-md border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+							>
+								{t.repositories.previous}
+							</button>
+							<div className="hidden items-center gap-1 sm:flex">
+								{getPageNumbers(false).map((page, index) => {
+									if (page === "...") {
+										return (
+											<span
+												key={`ellipsis-${index}`}
+												className="px-2 text-xs text-gray-400"
+											>
+												...
+											</span>
+										)
+									}
+									return (
+										<button
+											key={page}
+											onClick={() => handlePageChange(page as number)}
+											className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+												currentPage === page
+													? "bg-gray-900 text-white"
+													: "border border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
+											}`}
+										>
+											{page}
+										</button>
+									)
+								})}
+							</div>
+							<div className="flex items-center gap-1 sm:hidden">
+								<span className="rounded-md border border-gray-200 bg-gray-900 px-3 py-1.5 text-xs font-medium text-white">
+									{currentPage} / {totalPages}
+								</span>
+							</div>
+							<button
+								onClick={() => handlePageChange(currentPage + 1)}
+								disabled={currentPage === totalPages}
+								className="rounded-md border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+							>
+								{t.repositories.next}
+							</button>
+						</div>
 					</div>
 				</div>
 			)}
