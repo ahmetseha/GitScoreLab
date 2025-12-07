@@ -59,26 +59,37 @@ function App() {
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+		<div className="min-h-screen bg-white dark:bg-gray-950">
 			<Header />
-			<SearchForm onSearch={handleSearch} isLoading={isLoading} />
+			{!username && (
+				<>
+					<EmptyState />
+					<SearchForm onSearch={handleSearch} isLoading={isLoading} />
+				</>
+			)}
 
-			{!username && <EmptyState />}
+			{username && (
+				<div className="mx-auto max-w-7xl px-6 py-8">
+					<SearchForm onSearch={handleSearch} isLoading={isLoading} />
+				</div>
+			)}
 
 			{isLoading && username && <LoadingState />}
 
 			{isError && username && (
-				<ErrorState message={getErrorMessage()} onRetry={handleRetry} />
+				<div className="mx-auto max-w-7xl px-6 py-8">
+					<ErrorState message={getErrorMessage()} onRetry={handleRetry} />
+				</div>
 			)}
 
 			{user && repos && rating && !isLoading && !isError && (
-				<div className="mx-auto max-w-5xl px-4 pb-12">
-					<div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+				<div className="mx-auto max-w-7xl px-6 pb-16">
+					<div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
 						<UserProfileCard user={user} repos={repos} />
 						<RatingSummaryCard rating={rating} />
 					</div>
 
-					<div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+					<div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
 						<RadarRatingChart rating={rating} />
 						<RepoStarsChart repos={repos} />
 					</div>

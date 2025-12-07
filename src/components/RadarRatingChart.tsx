@@ -42,28 +42,29 @@ export function RadarRatingChart({ rating }: RadarRatingChartProps) {
 	]
 
 	return (
-		<div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-			<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-				Rating Analizi
+		<div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+			<h3 className="mb-6 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
+				Rating Breakdown
 			</h3>
-			<ResponsiveContainer width="100%" height={300}>
+			<ResponsiveContainer width="100%" height={280}>
 				<RadarChart data={data}>
-					<PolarGrid />
+					<PolarGrid stroke="#E5E7EB" />
 					<PolarAngleAxis
 						dataKey="category"
-						tick={{ fill: "#6B7280", fontSize: 12 }}
+						tick={{ fill: "#6B7280", fontSize: 11, fontWeight: 500 }}
 					/>
 					<PolarRadiusAxis
 						angle={90}
 						domain={[0, 100]}
-						tick={{ fill: "#6B7280", fontSize: 10 }}
+						tick={{ fill: "#9CA3AF", fontSize: 9 }}
 					/>
 					<Radar
 						name="Score"
 						dataKey="score"
-						stroke="#3B82F6"
-						fill="#3B82F6"
-						fillOpacity={0.6}
+						stroke="#111827"
+						fill="#111827"
+						fillOpacity={0.3}
+						strokeWidth={1.5}
 					/>
 				</RadarChart>
 			</ResponsiveContainer>

@@ -17,22 +17,35 @@ export function SearchForm({ onSearch, isLoading = false }: SearchFormProps) {
 	}
 
 	return (
-		<div className="max-w-5xl mx-auto px-4 py-8">
-			<form onSubmit={handleSubmit} className="flex gap-4">
+		<div className="relative mx-auto max-w-2xl px-6">
+			<form onSubmit={handleSubmit} className="relative">
 				<input
 					type="text"
 					value={username}
 					onChange={(e) => setUsername(e.target.value)}
-					placeholder="GitHub kullanıcı adı girin..."
-					className="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+					placeholder="find GitHub username"
+					className="w-full rounded-lg border border-gray-200 bg-white px-5 py-4 pr-12 text-base text-gray-900 placeholder-gray-400 shadow-sm transition-all focus:border-gray-400 focus:outline-none focus:ring-0 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500 dark:focus:border-gray-600"
 					disabled={isLoading}
 				/>
 				<button
 					type="submit"
 					disabled={isLoading || !username.trim()}
-					className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors"
+					className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 disabled:cursor-not-allowed disabled:opacity-50 dark:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+					aria-label="Search"
 				>
-					{isLoading ? "Yükleniyor..." : "Analiz Et"}
+					<svg
+						className="h-5 w-5"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth={2}
+							d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+						/>
+					</svg>
 				</button>
 			</form>
 		</div>

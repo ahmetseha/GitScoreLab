@@ -23,99 +23,97 @@ export function RatingSummaryCard({ rating }: RatingSummaryCardProps) {
 	const colorClass = getRatingColor(rating.finalRating)
 
 	return (
-		<div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+		<div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
 			<div className="text-center">
-				<div className={`text-6xl font-bold ${colorClass} mb-2`}>
+				<div className={`mb-1 text-5xl font-bold tracking-tight ${colorClass}`}>
 					{rating.finalRating.toFixed(1)}
 				</div>
-				<div className="text-2xl text-gray-600 dark:text-gray-400 mb-1">
+				<div className="mb-4 text-sm font-medium text-gray-500 dark:text-gray-500">
 					/ 100
 				</div>
-				<div className={`text-xl font-semibold ${colorClass} mt-4`}>
+				<div className={`text-sm font-semibold uppercase tracking-wide ${colorClass}`}>
 					{label}
 				</div>
 			</div>
-			<div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-				<div className="space-y-3">
-					<div>
-						<div className="flex justify-between text-sm mb-1">
-							<span className="text-gray-600 dark:text-gray-400">
-								Popularity
-							</span>
-							<span className="font-semibold text-gray-900 dark:text-white">
-								{rating.popularityScore}
-							</span>
-						</div>
-						<div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-							<div
-								className="bg-blue-600 h-2 rounded-full transition-all"
-								style={{ width: `${rating.popularityScore}%` }}
-							></div>
-						</div>
+			<div className="mt-6 space-y-4 border-t border-gray-100 pt-6 dark:border-gray-800">
+				<div>
+					<div className="mb-1.5 flex justify-between text-xs">
+						<span className="font-medium text-gray-600 dark:text-gray-400">
+							Popularity
+						</span>
+						<span className="font-semibold text-gray-900 dark:text-white">
+							{rating.popularityScore}
+						</span>
 					</div>
-					<div>
-						<div className="flex justify-between text-sm mb-1">
-							<span className="text-gray-600 dark:text-gray-400">
-								Activity
-							</span>
-							<span className="font-semibold text-gray-900 dark:text-white">
-								{rating.activityScore}
-							</span>
-						</div>
-						<div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-							<div
-								className="bg-green-600 h-2 rounded-full transition-all"
-								style={{ width: `${rating.activityScore}%` }}
-							></div>
-						</div>
+					<div className="h-1 w-full rounded-full bg-gray-100 dark:bg-gray-800">
+						<div
+							className="h-1 rounded-full bg-gray-900 transition-all dark:bg-white"
+							style={{ width: `${rating.popularityScore}%` }}
+						></div>
 					</div>
-					<div>
-						<div className="flex justify-between text-sm mb-1">
-							<span className="text-gray-600 dark:text-gray-400">
-								Code Quality
-							</span>
-							<span className="font-semibold text-gray-900 dark:text-white">
-								{rating.codeQualityScore}
-							</span>
-						</div>
-						<div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-							<div
-								className="bg-purple-600 h-2 rounded-full transition-all"
-								style={{ width: `${rating.codeQualityScore}%` }}
-							></div>
-						</div>
+				</div>
+				<div>
+					<div className="mb-1.5 flex justify-between text-xs">
+						<span className="font-medium text-gray-600 dark:text-gray-400">
+							Activity
+						</span>
+						<span className="font-semibold text-gray-900 dark:text-white">
+							{rating.activityScore}
+						</span>
 					</div>
-					<div>
-						<div className="flex justify-between text-sm mb-1">
-							<span className="text-gray-600 dark:text-gray-400">
-								Community
-							</span>
-							<span className="font-semibold text-gray-900 dark:text-white">
-								{rating.communityScore}
-							</span>
-						</div>
-						<div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-							<div
-								className="bg-orange-600 h-2 rounded-full transition-all"
-								style={{ width: `${rating.communityScore}%` }}
-							></div>
-						</div>
+					<div className="h-1 w-full rounded-full bg-gray-100 dark:bg-gray-800">
+						<div
+							className="h-1 rounded-full bg-gray-900 transition-all dark:bg-white"
+							style={{ width: `${rating.activityScore}%` }}
+						></div>
 					</div>
-					<div>
-						<div className="flex justify-between text-sm mb-1">
-							<span className="text-gray-600 dark:text-gray-400">
-								Diversity
-							</span>
-							<span className="font-semibold text-gray-900 dark:text-white">
-								{rating.diversityScore}
-							</span>
-						</div>
-						<div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-							<div
-								className="bg-pink-600 h-2 rounded-full transition-all"
-								style={{ width: `${rating.diversityScore}%` }}
-							></div>
-						</div>
+				</div>
+				<div>
+					<div className="mb-1.5 flex justify-between text-xs">
+						<span className="font-medium text-gray-600 dark:text-gray-400">
+							Code Quality
+						</span>
+						<span className="font-semibold text-gray-900 dark:text-white">
+							{rating.codeQualityScore}
+						</span>
+					</div>
+					<div className="h-1 w-full rounded-full bg-gray-100 dark:bg-gray-800">
+						<div
+							className="h-1 rounded-full bg-gray-900 transition-all dark:bg-white"
+							style={{ width: `${rating.codeQualityScore}%` }}
+						></div>
+					</div>
+				</div>
+				<div>
+					<div className="mb-1.5 flex justify-between text-xs">
+						<span className="font-medium text-gray-600 dark:text-gray-400">
+							Community
+						</span>
+						<span className="font-semibold text-gray-900 dark:text-white">
+							{rating.communityScore}
+						</span>
+					</div>
+					<div className="h-1 w-full rounded-full bg-gray-100 dark:bg-gray-800">
+						<div
+							className="h-1 rounded-full bg-gray-900 transition-all dark:bg-white"
+							style={{ width: `${rating.communityScore}%` }}
+						></div>
+					</div>
+				</div>
+				<div>
+					<div className="mb-1.5 flex justify-between text-xs">
+						<span className="font-medium text-gray-600 dark:text-gray-400">
+							Diversity
+						</span>
+						<span className="font-semibold text-gray-900 dark:text-white">
+							{rating.diversityScore}
+						</span>
+					</div>
+					<div className="h-1 w-full rounded-full bg-gray-100 dark:bg-gray-800">
+						<div
+							className="h-1 rounded-full bg-gray-900 transition-all dark:bg-white"
+							style={{ width: `${rating.diversityScore}%` }}
+						></div>
 					</div>
 				</div>
 			</div>

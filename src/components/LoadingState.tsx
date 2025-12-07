@@ -1,9 +1,9 @@
 export function LoadingState() {
 	return (
-		<div className="max-w-5xl mx-auto px-4 py-12 text-center">
-			<div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-blue-600 dark:border-gray-600 dark:border-t-blue-500"></div>
-			<p className="mt-4 text-gray-600 dark:text-gray-400">
-				Veriler yükleniyor...
+		<div className="mx-auto max-w-7xl px-6 py-20 text-center">
+			<div className="inline-block h-8 w-8 animate-spin rounded-full border-2 border-gray-300 border-t-gray-900 dark:border-gray-700 dark:border-t-white"></div>
+			<p className="mt-4 text-sm font-medium text-gray-600 dark:text-gray-400">
+				analyzing profile...
 			</p>
 		</div>
 	)

@@ -50,40 +50,40 @@ export function RepoList({ repos }: RepoListProps) {
 	}
 
 	return (
-		<div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-			<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-				Repolar ({repos.length})
+		<div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+			<h3 className="mb-6 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
+				Repositories ({repos.length})
 			</h3>
 			<div className="overflow-x-auto">
 				<table className="w-full">
 					<thead>
-						<tr className="border-b border-gray-200 dark:border-gray-700">
+						<tr className="border-b border-gray-100 dark:border-gray-800">
 							<th
-								className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
+								className="cursor-pointer py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 transition-colors hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
 								onClick={() => handleSort("name")}
 							>
-								Repo Adı {getSortIcon("name")}
+								Name {getSortIcon("name")}
 							</th>
 							<th
-								className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
+								className="cursor-pointer py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 transition-colors hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
 								onClick={() => handleSort("stars")}
 							>
 								Stars {getSortIcon("stars")}
 							</th>
 							<th
-								className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
+								className="cursor-pointer py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 transition-colors hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
 								onClick={() => handleSort("forks")}
 							>
 								Forks {getSortIcon("forks")}
 							</th>
-							<th className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+							<th className="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-400">
 								Language
 							</th>
 							<th
-								className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
+								className="cursor-pointer py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 transition-colors hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
 								onClick={() => handleSort("updated")}
 							>
-								Son Güncelleme {getSortIcon("updated")}
+								Updated {getSortIcon("updated")}
 							</th>
 						</tr>
 					</thead>
@@ -91,41 +91,41 @@ export function RepoList({ repos }: RepoListProps) {
 						{sortedRepos.map((repo) => (
 							<tr
 								key={repo.id}
-								className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+								className="border-b border-gray-50 transition-colors hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-gray-800"
 							>
 								<td className="py-3 px-4">
 									<a
 										href={repo.html_url}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+										className="font-medium text-gray-900 hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
 									>
 										{repo.name}
 									</a>
 									{repo.description && (
-										<div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+										<div className="mt-1 text-xs text-gray-500 dark:text-gray-500">
 											{repo.description}
 										</div>
 									)}
 								</td>
-								<td className="py-3 px-4 text-gray-900 dark:text-white">
+								<td className="py-3 px-4 text-sm text-gray-900 dark:text-white">
 									{repo.stargazers_count}
 								</td>
-								<td className="py-3 px-4 text-gray-900 dark:text-white">
+								<td className="py-3 px-4 text-sm text-gray-900 dark:text-white">
 									{repo.forks_count}
 								</td>
 								<td className="py-3 px-4">
 									{repo.language ? (
-										<span className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm">
+										<span className="rounded border border-gray-200 bg-white px-2 py-0.5 text-xs text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
 											{repo.language}
 										</span>
 									) : (
-										<span className="text-gray-400 dark:text-gray-500 text-sm">
+										<span className="text-xs text-gray-400 dark:text-gray-600">
 											-
 										</span>
 									)}
 								</td>
-								<td className="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">
+								<td className="py-3 px-4 text-xs text-gray-500 dark:text-gray-500">
 									{formatDate(repo.pushed_at)}
 								</td>
 							</tr>

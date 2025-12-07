@@ -24,29 +24,30 @@ export function RepoStarsChart({ repos }: RepoStarsChartProps) {
 		}))
 
 	return (
-		<div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-			<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-				En Popüler Repolar (Top 10)
+		<div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+			<h3 className="mb-6 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
+				Top Repositories
 			</h3>
-			<ResponsiveContainer width="100%" height={300}>
+			<ResponsiveContainer width="100%" height={280}>
 				<BarChart data={topRepos}>
-					<CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+					<CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
 					<XAxis
 						dataKey="name"
 						angle={-45}
 						textAnchor="end"
 						height={100}
-						tick={{ fill: "#6B7280", fontSize: 12 }}
+						tick={{ fill: "#6B7280", fontSize: 11 }}
 					/>
-					<YAxis tick={{ fill: "#6B7280", fontSize: 12 }} />
+					<YAxis tick={{ fill: "#6B7280", fontSize: 11 }} />
 					<Tooltip
 						contentStyle={{
-							backgroundColor: "#F9FAFB",
+							backgroundColor: "#FFFFFF",
 							border: "1px solid #E5E7EB",
-							borderRadius: "8px",
+							borderRadius: "6px",
+							fontSize: "12px",
 						}}
 					/>
-					<Bar dataKey="stars" fill="#3B82F6" />
+					<Bar dataKey="stars" fill="#111827" radius={[4, 4, 0, 0]} />
 				</BarChart>
 			</ResponsiveContainer>
 		</div>
