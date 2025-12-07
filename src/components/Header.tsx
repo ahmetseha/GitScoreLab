@@ -41,7 +41,7 @@ export function Header({ onThemeToggle }: HeaderProps) {
 			<div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
 				<div className="flex items-center gap-2">
 					<h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-						GitHub Rated
+						Git Score Lab
 					</h1>
 				</div>
 				<div className="flex items-center gap-4">
@@ -81,7 +81,7 @@ export function Header({ onThemeToggle }: HeaderProps) {
 						)}
 					</button>
 					<a
-						href="https://github.com"
+						href="https://github.com/ahmetseha"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="text-gray-700 transition-colors hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
