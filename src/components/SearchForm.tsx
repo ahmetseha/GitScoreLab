@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react"
+import { useLocale } from "@/contexts/LocaleContext"
 
 interface SearchFormProps {
 	onSearch: (username: string) => void
@@ -6,6 +7,7 @@ interface SearchFormProps {
 }
 
 export function SearchForm({ onSearch, isLoading = false }: SearchFormProps) {
+	const { t } = useLocale()
 	const [username, setUsername] = useState("")
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -23,7 +25,7 @@ export function SearchForm({ onSearch, isLoading = false }: SearchFormProps) {
 					type="text"
 					value={username}
 					onChange={(e) => setUsername(e.target.value)}
-					placeholder="find GitHub username"
+					placeholder={t.common.searchPlaceholder}
 					className="w-full rounded-lg border border-gray-200 bg-white px-5 py-4 pr-12 text-base text-gray-900 placeholder-gray-400 shadow-sm transition-all focus:border-gray-400 focus:outline-none focus:ring-0 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500 dark:focus:border-gray-600"
 					disabled={isLoading}
 				/>

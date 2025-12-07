@@ -7,35 +7,38 @@ import {
 	ResponsiveContainer,
 } from "recharts"
 import type { GithubRatingResult } from "@/types/github"
+import { useLocale } from "@/contexts/LocaleContext"
 
 interface RadarRatingChartProps {
 	rating: GithubRatingResult
 }
 
 export function RadarRatingChart({ rating }: RadarRatingChartProps) {
+	const { t } = useLocale()
+
 	const data = [
 		{
-			category: "Popularity",
+			category: t.rating.categories.popularity,
 			score: rating.popularityScore,
 			fullMark: 100,
 		},
 		{
-			category: "Activity",
+			category: t.rating.categories.activity,
 			score: rating.activityScore,
 			fullMark: 100,
 		},
 		{
-			category: "Code Quality",
+			category: t.rating.categories.codeQuality,
 			score: rating.codeQualityScore,
 			fullMark: 100,
 		},
 		{
-			category: "Community",
+			category: t.rating.categories.community,
 			score: rating.communityScore,
 			fullMark: 100,
 		},
 		{
-			category: "Diversity",
+			category: t.rating.categories.diversity,
 			score: rating.diversityScore,
 			fullMark: 100,
 		},
@@ -44,7 +47,7 @@ export function RadarRatingChart({ rating }: RadarRatingChartProps) {
 	return (
 		<div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
 			<h3 className="mb-6 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
-				Rating Breakdown
+				{t.rating.breakdown}
 			</h3>
 			<ResponsiveContainer width="100%" height={280}>
 				<RadarChart data={data}>

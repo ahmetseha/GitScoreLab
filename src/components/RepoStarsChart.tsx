@@ -8,12 +8,15 @@ import {
 	ResponsiveContainer,
 } from "recharts"
 import type { GithubRepo } from "@/types/github"
+import { useLocale } from "@/contexts/LocaleContext"
 
 interface RepoStarsChartProps {
 	repos: GithubRepo[]
 }
 
 export function RepoStarsChart({ repos }: RepoStarsChartProps) {
+	const { t } = useLocale()
+
 	const topRepos = [...repos]
 		.sort((a, b) => b.stargazers_count - a.stargazers_count)
 		.slice(0, 10)
@@ -26,7 +29,7 @@ export function RepoStarsChart({ repos }: RepoStarsChartProps) {
 	return (
 		<div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
 			<h3 className="mb-6 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
-				Top Repositories
+				{t.charts.topRepositories}
 			</h3>
 			<ResponsiveContainer width="100%" height={280}>
 				<BarChart data={topRepos}>

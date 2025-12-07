@@ -1,14 +1,8 @@
 import type { GithubRatingResult } from "@/types/github"
+import { useLocale } from "@/contexts/LocaleContext"
 
 interface RatingSummaryCardProps {
 	rating: GithubRatingResult
-}
-
-function getRatingLabel(rating: number): string {
-	if (rating >= 80) return "Elite"
-	if (rating >= 60) return "Strong"
-	if (rating >= 40) return "Growing"
-	return "Beginner"
 }
 
 function getRatingColor(rating: number): string {
@@ -19,8 +13,14 @@ function getRatingColor(rating: number): string {
 }
 
 export function RatingSummaryCard({ rating }: RatingSummaryCardProps) {
-	const label = getRatingLabel(rating.finalRating)
+	const { t } = useLocale()
 	const colorClass = getRatingColor(rating.finalRating)
+
+	let label: string
+	if (rating.finalRating >= 80) label = t.rating.label.elite
+	else if (rating.finalRating >= 60) label = t.rating.label.strong
+	else if (rating.finalRating >= 40) label = t.rating.label.growing
+	else label = t.rating.label.beginner
 
 	return (
 		<div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
@@ -39,7 +39,7 @@ export function RatingSummaryCard({ rating }: RatingSummaryCardProps) {
 				<div>
 					<div className="mb-1.5 flex justify-between text-xs">
 						<span className="font-medium text-gray-600 dark:text-gray-400">
-							Popularity
+							{t.rating.categories.popularity}
 						</span>
 						<span className="font-semibold text-gray-900 dark:text-white">
 							{rating.popularityScore}
@@ -55,7 +55,7 @@ export function RatingSummaryCard({ rating }: RatingSummaryCardProps) {
 				<div>
 					<div className="mb-1.5 flex justify-between text-xs">
 						<span className="font-medium text-gray-600 dark:text-gray-400">
-							Activity
+							{t.rating.categories.activity}
 						</span>
 						<span className="font-semibold text-gray-900 dark:text-white">
 							{rating.activityScore}
@@ -71,7 +71,7 @@ export function RatingSummaryCard({ rating }: RatingSummaryCardProps) {
 				<div>
 					<div className="mb-1.5 flex justify-between text-xs">
 						<span className="font-medium text-gray-600 dark:text-gray-400">
-							Code Quality
+							{t.rating.categories.codeQuality}
 						</span>
 						<span className="font-semibold text-gray-900 dark:text-white">
 							{rating.codeQualityScore}
@@ -87,7 +87,7 @@ export function RatingSummaryCard({ rating }: RatingSummaryCardProps) {
 				<div>
 					<div className="mb-1.5 flex justify-between text-xs">
 						<span className="font-medium text-gray-600 dark:text-gray-400">
-							Community
+							{t.rating.categories.community}
 						</span>
 						<span className="font-semibold text-gray-900 dark:text-white">
 							{rating.communityScore}
@@ -103,7 +103,7 @@ export function RatingSummaryCard({ rating }: RatingSummaryCardProps) {
 				<div>
 					<div className="mb-1.5 flex justify-between text-xs">
 						<span className="font-medium text-gray-600 dark:text-gray-400">
-							Diversity
+							{t.rating.categories.diversity}
 						</span>
 						<span className="font-semibold text-gray-900 dark:text-white">
 							{rating.diversityScore}

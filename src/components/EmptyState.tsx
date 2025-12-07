@@ -1,4 +1,8 @@
+import { useLocale } from "@/contexts/LocaleContext"
+
 export function EmptyState() {
+	const { t } = useLocale()
+
 	return (
 		<div className="mx-auto max-w-4xl px-6 py-20 text-center">
 			<div className="mb-8 flex justify-center">
@@ -23,10 +27,10 @@ export function EmptyState() {
 				</div>
 			</div>
 			<h1 className="mb-4 text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-				GIT SCORE LAB
+				{t.hero.title}
 			</h1>
 			<p className="mx-auto mb-12 max-w-xl text-lg font-medium text-gray-600 dark:text-gray-400">
-				find the GitHub rating score of any developer
+				{t.hero.subtitle}
 			</p>
 		</div>
 	)

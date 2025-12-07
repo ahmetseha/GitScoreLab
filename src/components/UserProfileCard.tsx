@@ -1,5 +1,6 @@
 import type { GithubUser, GithubRepo } from "@/types/github"
 import { getLastActiveDate } from "@/utils/date"
+import { useLocale } from "@/contexts/LocaleContext"
 
 interface UserProfileCardProps {
 	user: GithubUser
@@ -7,7 +8,8 @@ interface UserProfileCardProps {
 }
 
 export function UserProfileCard({ user, repos }: UserProfileCardProps) {
-	const lastActive = getLastActiveDate(repos)
+	const { t, locale } = useLocale()
+	const lastActive = getLastActiveDate(repos, locale)
 
 	return (
 		<div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
@@ -86,7 +88,7 @@ export function UserProfileCard({ user, repos }: UserProfileCardProps) {
 						{user.followers}
 					</div>
 					<div className="text-xs text-gray-500 dark:text-gray-500">
-						followers
+						{t.profile.followers}
 					</div>
 				</div>
 				<div>
@@ -94,7 +96,7 @@ export function UserProfileCard({ user, repos }: UserProfileCardProps) {
 						{user.following}
 					</div>
 					<div className="text-xs text-gray-500 dark:text-gray-500">
-						following
+						{t.profile.following}
 					</div>
 				</div>
 				<div>
@@ -102,7 +104,7 @@ export function UserProfileCard({ user, repos }: UserProfileCardProps) {
 						{user.public_repos}
 					</div>
 					<div className="text-xs text-gray-500 dark:text-gray-500">
-						repositories
+						{t.profile.repositories}
 					</div>
 				</div>
 				<div>
@@ -110,12 +112,12 @@ export function UserProfileCard({ user, repos }: UserProfileCardProps) {
 						{user.public_gists}
 					</div>
 					<div className="text-xs text-gray-500 dark:text-gray-500">
-						gists
+						{t.profile.gists}
 					</div>
 				</div>
 			</div>
 			<div className="mt-4 text-xs text-gray-500 dark:text-gray-500">
-				last active: {lastActive}
+				{t.common.lastActive}: {lastActive}
 			</div>
 		</div>
 	)

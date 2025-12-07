@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
+import { useLocale } from "@/contexts/LocaleContext"
 
 interface HeaderProps {
 	onThemeToggle?: () => void
 }
 
 export function Header({ onThemeToggle }: HeaderProps) {
+	const { locale, setLocale } = useLocale()
 	const [isDark, setIsDark] = useState(() => {
 		if (typeof window !== "undefined") {
 			const darkMode = localStorage.getItem("darkMode") === "true"
@@ -39,12 +41,34 @@ export function Header({ onThemeToggle }: HeaderProps) {
 	return (
 		<header className="border-b border-gray-100 bg-white dark:border-gray-800 dark:bg-gray-950">
 			<div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-				<div className="flex items-center gap-2">
+				<a href="/">
 					<h1 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
 						GIT SCORE LAB
 					</h1>
-				</div>
-				<div className="flex items-center gap-3">
+				</a>
+				<div className="flex items-center gap-2">
+					<div className="flex items-center gap-1 rounded-md border border-gray-200 bg-white p-0.5 dark:border-gray-800 dark:bg-gray-900">
+						<button
+							onClick={() => setLocale("tr")}
+							className={`rounded px-2 py-1 text-xs font-medium transition-colors ${
+								locale === "tr"
+									? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
+									: "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+							}`}
+						>
+							TR
+						</button>
+						<button
+							onClick={() => setLocale("en")}
+							className={`rounded px-2 py-1 text-xs font-medium transition-colors ${
+								locale === "en"
+									? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
+									: "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+							}`}
+						>
+							EN
+						</button>
+					</div>
 					<button
 						onClick={handleThemeToggle}
 						className="rounded-md p-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"

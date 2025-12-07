@@ -12,8 +12,10 @@ import { RepoList } from "@/components/RepoList"
 import { useGithubUser } from "@/hooks/useGithubUser"
 import { useGithubRepos } from "@/hooks/useGithubRepos"
 import { useGithubRating } from "@/hooks/useGithubRating"
+import { useLocale } from "@/contexts/LocaleContext"
 
 function App() {
+	const { t } = useLocale()
 	const [username, setUsername] = useState<string | null>(null)
 
 	const {
@@ -48,14 +50,14 @@ function App() {
 	}
 
 	const getErrorMessage = (): string => {
-		if (!error) return "Bilinmeyen bir hata oluştu"
+		if (!error) return t.errors.unknown
 		if (error.message.includes("404")) {
-			return "Kullanıcı bulunamadı. Lütfen geçerli bir GitHub kullanıcı adı girin."
+			return t.errors.userNotFound
 		}
 		if (error.message.includes("rate limit") || error.message.includes("403")) {
-			return "API rate limit aşıldı. Lütfen birkaç dakika sonra tekrar deneyin."
+			return t.errors.rateLimit
 		}
-		return error.message || "Bir hata oluştu. Lütfen tekrar deneyin."
+		return error.message || t.errors.generic
 	}
 
 	return (

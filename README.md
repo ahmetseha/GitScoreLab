@@ -2,7 +2,7 @@
 
 GitHub kullanıcılarını analiz edip 0-100 arası bir "GitHub Rating" skoru üreten modern bir web uygulaması.
 
-## 🚀 Özellikler
+## Özellikler
 
 - **Kullanıcı Analizi**: GitHub kullanıcı profillerini detaylı analiz
 - **Rating Sistemi**: 5 farklı kategoride skorlama:
@@ -15,7 +15,7 @@ GitHub kullanıcılarını analiz edip 0-100 arası bir "GitHub Rating" skoru ü
 - **Dark Mode**: Karanlık ve aydınlık tema desteği
 - **Responsive Design**: Mobil ve desktop uyumlu tasarım
 
-## 🛠 Teknoloji Yığını
+## Teknoloji Yığını
 
 - **React 19** - UI framework
 - **TypeScript** - Type safety
@@ -26,7 +26,7 @@ GitHub kullanıcılarını analiz edip 0-100 arası bir "GitHub Rating" skoru ü
 - **Axios** - HTTP client
 - **Vitest** - Testing framework
 
-## 📦 Kurulum
+## Kurulum
 
 1. Projeyi klonlayın:
 ```bash
@@ -51,7 +51,7 @@ VITE_GITHUB_TOKEN=your_token_here
 
 GitHub token oluşturmak için: [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens)
 
-## 🚀 Çalıştırma
+## Çalıştırma
 
 Development server'ı başlatın:
 ```bash
@@ -60,7 +60,7 @@ npm run dev
 
 Uygulama `http://localhost:5173` adresinde çalışacaktır.
 
-## 🧪 Test
+## Test
 
 Testleri çalıştırın:
 ```bash
@@ -72,7 +72,7 @@ Test UI ile çalıştırın:
 npm run test:ui
 ```
 
-## 📊 Rating Hesaplama
+## Rating Hesaplama
 
 Rating sistemi aşağıdaki formüllere göre çalışır:
 
@@ -95,7 +95,7 @@ Rating sistemi aşağıdaki formüllere göre çalışır:
 ### Diversity Score (10% ağırlık)
 - Unique programlama dili sayısı
 
-## 📁 Proje Yapısı
+## Proje Yapısı
 
 ```
 src/
@@ -107,7 +107,7 @@ src/
 └── test/            # Test setup dosyaları
 ```
 
-## 🔧 Build
+## Build
 
 Production build:
 ```bash
@@ -119,6 +119,6 @@ Build önizleme:
 npm run preview
 ```
 
-## 📝 Lisans
+## Lisans
 
 MIT

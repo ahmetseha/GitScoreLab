@@ -1,6 +1,7 @@
 import { useState } from "react"
 import type { GithubRepo } from "@/types/github"
 import { formatDate } from "@/utils/date"
+import { useLocale } from "@/contexts/LocaleContext"
 
 interface RepoListProps {
 	repos: GithubRepo[]
@@ -10,6 +11,7 @@ type SortField = "stars" | "forks" | "updated" | "name"
 type SortOrder = "asc" | "desc"
 
 export function RepoList({ repos }: RepoListProps) {
+	const { t, locale } = useLocale()
 	const [sortField, setSortField] = useState<SortField>("stars")
 	const [sortOrder, setSortOrder] = useState<SortOrder>("desc")
 
@@ -52,7 +54,7 @@ export function RepoList({ repos }: RepoListProps) {
 	return (
 		<div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
 			<h3 className="mb-6 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
-				Repositories ({repos.length})
+				{t.repositories.title} ({repos.length})
 			</h3>
 			<div className="overflow-x-auto">
 				<table className="w-full">
@@ -62,28 +64,28 @@ export function RepoList({ repos }: RepoListProps) {
 								className="cursor-pointer py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 transition-colors hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
 								onClick={() => handleSort("name")}
 							>
-								Name {getSortIcon("name")}
+								{t.repositories.name} {getSortIcon("name")}
 							</th>
 							<th
 								className="cursor-pointer py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 transition-colors hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
 								onClick={() => handleSort("stars")}
 							>
-								Stars {getSortIcon("stars")}
+								{t.repositories.stars} {getSortIcon("stars")}
 							</th>
 							<th
 								className="cursor-pointer py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 transition-colors hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
 								onClick={() => handleSort("forks")}
 							>
-								Forks {getSortIcon("forks")}
+								{t.repositories.forks} {getSortIcon("forks")}
 							</th>
 							<th className="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-400">
-								Language
+								{t.repositories.language}
 							</th>
 							<th
 								className="cursor-pointer py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 transition-colors hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
 								onClick={() => handleSort("updated")}
 							>
-								Updated {getSortIcon("updated")}
+								{t.repositories.updated} {getSortIcon("updated")}
 							</th>
 						</tr>
 					</thead>
@@ -126,7 +128,7 @@ export function RepoList({ repos }: RepoListProps) {
 									)}
 								</td>
 								<td className="py-3 px-4 text-xs text-gray-500 dark:text-gray-500">
-									{formatDate(repo.pushed_at)}
+									{formatDate(repo.pushed_at, locale)}
 								</td>
 							</tr>
 						))}
