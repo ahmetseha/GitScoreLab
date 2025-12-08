@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useLocale } from "@/contexts/LocaleContext"
+import { Logo } from "./Logo"
 
 export function Header() {
 	const { locale, setLocale } = useLocale()
@@ -11,10 +12,8 @@ export function Header() {
 	return (
 		<header className="sticky top-0 z-50 border-b border-gray-100/50 bg-white/80 backdrop-blur-xl backdrop-saturate-150">
 			<div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-				<a href="/">
-					<h1 className="text-lg font-semibold tracking-tight text-gray-900">
-						GIT SCORE LAB
-					</h1>
+				<a href="/" className="flex items-center">
+					<Logo />
 				</a>
 				<div className="flex items-center gap-4">
 					<div className="flex items-center gap-1 rounded-md border border-gray-200 bg-white p-0.5">
